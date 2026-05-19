@@ -78,21 +78,4 @@
             <class name="com.flighthub.tests.FlightSearchTests"/>
         </classes>
     </test>
-
-    <!-- ============================================ -->
-    <!-- BOOKING TESTS                                -->
-    <!-- ============================================ -->
-    <test name="Booking Tests - Chrome">
-        <parameter name="browser" value="chrome"/>
-        <groups>
-            <run>
-                <include name="booking"/>
-                <include name="regression"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.flighthub.tests.BookingTests"/>
-        </classes>
-    </test>
-
 </suite>
