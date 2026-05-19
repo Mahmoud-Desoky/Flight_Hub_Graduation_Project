@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite [
+        <!ENTITY configLocal SYSTEM "src/test/resources/config.properties">
+        ]>
+<!--
+    FlightHub Automation - TestNG Suite Configuration
+
+    This file configures the test execution for the FlightHub automation framework.
+    It supports parallel execution, multiple browsers, and various test groups.
+
+    Usage:
+    - Local execution: mvn test
+    - Grid execution: mvn test -Pgrid
+    - Specific browser: mvn test -Dbrowser=chrome
+    - Specific groups: mvn test -Dgroups=login,search
+-->
+<suite name="FlightHub Regression Suite"
+       parallel="methods"
+       thread-count="3"
+       verbose="2"
+       configfailurepolicy="continue">
+
+    <!-- Listeners for reporting and test management -->
+    <listeners>
+        <listener class-name="com.flighthub.listeners.TestListener"/>
+        <listener class-name="com.flighthub.listeners.RetryListener"/>
+    </listeners>
+
+    <!-- Test Parameters -->
+    <parameter name="browser" value="${browser}"/>
+    <parameter name="executionMode" value="${execution.mode}"/>
+    <parameter name="hubUrl" value="${hub.url}"/>
+
+    <!-- ============================================ -->
+    <!-- LOGIN TESTS                                  -->
+    <!-- ============================================ -->
+    <test name="Login Tests - Chrome">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="login"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.flighthub.tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <!-- ============================================ -->
+    <!-- REGISTRATION TESTS                           -->
+    <!-- ============================================ -->
+    <test name="Registration Tests - Chrome">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="registration"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.flighthub.tests.RegisterTest"/>
+        </classes>
+    </test>
+
+    <!-- ============================================ -->
+    <!-- FLIGHT SEARCH TESTS                          -->
+    <!-- ============================================ -->
+    <test name="Flight Search Tests - Chrome">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="search"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.flighthub.tests.FlightSearchTests"/>
+        </classes>
+    </test>
+
+    <!-- ============================================ -->
+    <!-- BOOKING TESTS                                -->
+    <!-- ============================================ -->
+    <test name="Booking Tests - Chrome">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="booking"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.flighthub.tests.BookingTests"/>
+        </classes>
+    </test>
+
+</suite>
