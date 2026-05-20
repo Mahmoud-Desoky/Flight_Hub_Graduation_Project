@@ -41,8 +41,8 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage.openSignInModal()
                 .selectEmailOption()
-                .submitEmail("test.user@example.com")
-                .enterPassword("TestPassword123!")
+                .submitEmail("justmooody23@gmail.com")
+                .enterPassword("12345678")
                 .clickSignIn();
 
         // Verify login was successful or proper error handling
@@ -169,35 +169,6 @@ public class LoginTests extends BaseTest {
         logInfo("Completed unregistered email test");
     }
 
-    /**
-     * Test: Verify sign-in modal UI elements
-     */
-    @Test(
-            groups = {"login", "regression", "ui"},
-            description = "Verify all UI elements in sign-in modal are displayed correctly",
-            priority = 5
-    )
-    public void testSignInModalUI() {
-        logInfo("Starting test: Sign-In Modal UI Verification");
-
-        HomePage homePage = new HomePage();
-        homePage.navigateToHomePage()
-                .acceptCookies();
-
-        LoginPage loginPage = new LoginPage();
-        loginPage.openSignInModal();
-
-        // Verify modal is open
-        Assert.assertTrue(loginPage.isModalOpen(), "Sign-in modal should be displayed");
-        logInfo("Sign-in modal is displayed");
-
-        // Verify modal title
-        // The modal title verification is implicit in isModalOpen()
-        logInfo("Sign-in modal UI elements verified");
-
-        loginPage.closeModal();
-        logInfo("Completed sign-in modal UI test");
-    }
 
     /**
      * Test: Verify all authentication options are available

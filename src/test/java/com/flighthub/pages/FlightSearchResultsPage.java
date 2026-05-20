@@ -78,10 +78,6 @@ public class FlightSearchResultsPage {
     private final By previousPageButton = By.xpath("//button[contains(text(), 'Previous')] | //a[contains(text(), 'Previous')]");
     private final By pageNumbers = By.cssSelector("[class*='pagination'] button, [class*='pagination'] a");
 
-    // Booking
-    private final By bookNowButton = By.xpath("//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'book')]");
-    private final By continueBookingButton = By.xpath("//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'continue')] | //a[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'continue')]");
-
     // ========== CONSTRUCTOR ==========
 
     public FlightSearchResultsPage() {

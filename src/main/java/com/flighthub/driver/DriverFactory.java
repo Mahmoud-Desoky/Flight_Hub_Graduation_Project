@@ -190,23 +190,23 @@ public class DriverFactory {
                     chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.addArguments("--window-size=1920,1080");
                     chromeOptions.merge(capabilities);
-                    return new RemoteWebDriver(new URL(hubUrl), chromeOptions);
+                    return new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
 
                 case "firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.addArguments("--width=1920");
                     firefoxOptions.addArguments("--height=1080");
                     firefoxOptions.merge(capabilities);
-                    return new RemoteWebDriver(new URL(hubUrl), firefoxOptions);
+                    return new RemoteWebDriver(new URL("http://localhost:4444/"), firefoxOptions);
 
                 case "edge":
                     EdgeOptions edgeOptions = new EdgeOptions();
                     edgeOptions.addArguments("--window-size=1920,1080");
                     edgeOptions.merge(capabilities);
-                    return new RemoteWebDriver(new URL(hubUrl), edgeOptions);
+                    return new RemoteWebDriver(new URL("http://localhost:4444/"), edgeOptions);
 
                 default:
-                    return new RemoteWebDriver(new URL(hubUrl), capabilities);
+                    return new RemoteWebDriver(new URL("http://localhost:4444/"), capabilities);
             }
         } catch (MalformedURLException e) {
             logger.error("Invalid Grid Hub URL: {}", hubUrl, e);

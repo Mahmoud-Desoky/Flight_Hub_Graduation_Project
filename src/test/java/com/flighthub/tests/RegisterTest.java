@@ -342,4 +342,45 @@ public class RegisterTest extends BaseTest {
 
         logInfo("Completed long names registration test");
     }
+    @Test(
+            groups = {"registration", "regression", "ui"},
+            description = "Verify all required fields are present in registration form",
+            priority = 9
+    )
+
+
+    /**
+     * Test: Registration with numbers in first/last name
+     */
+
+    public void testRegistrationWithInvalidName() {
+        logInfo("Starting test: Registration with Long Names");
+
+        String email = TestDataGenerator.getUniqueEmail();
+        String password = TestDataGenerator.getStrongPassword();
+        String longFirstName = "1";
+        String longLastName = "2";
+
+        HomePage homePage = new HomePage();
+        homePage.navigateToHomePage()
+                .acceptCookies();
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.openSignInModal()
+                .selectEmailOption()
+                .submitEmail(email);
+
+        if (loginPage.isRegistrationStep()) {
+            loginPage.enterFirstName(longFirstName)
+                    .enterLastName(longLastName)
+                    .enterRegistrationPassword(password)
+                    .enterConfirmPassword(password)
+                    .clickCreateAccount();
+
+            logInfo("Completed registration with long names");
+        }
+
+        logInfo("Completed long names registration test");
+    }
+
 }
